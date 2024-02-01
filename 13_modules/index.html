@@ -13,7 +13,7 @@
 
     const key = 'isServerStorage',
           btnSwitch = document.querySelector('.btn-switch-storage'),
-          storage = await getModule(key, btnSwitch);
+          storage = await getModule(key);
 
     getLocalStorage(key) === true ? btnSwitch.textContent = 'Перейти на локальное хранилище' : btnSwitch.textContent = 'Перейти на серверное хранилище';
 
