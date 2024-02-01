@@ -17,11 +17,7 @@ export function getLocalStorage(key) {
 
 export async function switchModule(isServerStorage) {
     if (!isServerStorage) return await import('./localStorage.js');
-
-
-    if (!isServerStorage) return await import('./localStorage.js');
     else return await import('./api.js')
-
 }
 
 export function switchLocalStorage(key) {
