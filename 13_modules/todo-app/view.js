@@ -111,11 +111,3 @@ async function createTodoApp(container, { title, owner, todoItemList = [], onCre
 }
 
 export { createTodoApp }
-
-
-
-/**
- * localStorage
- * Фронт часть не менять
- * 
- */
