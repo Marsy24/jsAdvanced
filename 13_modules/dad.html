@@ -22,11 +22,11 @@
         location.reload();
     })
 
-    const owner = 'me';
+    const owner = 'dad';
     (async () => {
         const todoItemList = await storage.getTodoList(owner);
         createTodoApp(document.getElementById('todo-app'), {
-            title: 'Мои дела',
+            title: 'Дела папы',
             owner,
             todoItemList, 
             onCreateFormSubmit: storage.createTodoItem, 
