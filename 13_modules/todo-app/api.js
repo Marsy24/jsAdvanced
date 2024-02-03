@@ -26,10 +26,9 @@ export function switchTodoItemDone({ todoItem }) {
     });
 }
 
-export function deleteTodoItem({ element, todoItem }) {
+export function deleteTodoItem({ todoItem }) {
     if (!confirm('Вы уверены?')) return;
     
-    element.remove();
     fetch(`http://localhost:3000/api/todos/${todoItem.id}`, {
         method: 'DELETE'
     })

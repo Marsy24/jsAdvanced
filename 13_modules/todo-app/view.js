@@ -61,7 +61,8 @@ function createTodoItemElement(todoItem, { onDone, onDelete }) {
         item.classList.toggle(doneClass);
     });
     deleteButton.addEventListener('click', () => {
-        onDelete({ todoItem, element: item });
+        onDelete({ todoItem });
+        item.remove();
     });
 
     buttonGroup.append(doneButton);

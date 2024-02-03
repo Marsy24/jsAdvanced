@@ -28,10 +28,8 @@ export function switchTodoItemDone({ todoItem }) {
     localStorage.setItem(todoItem.owner, JSON.stringify(listArray));
 }
 
-export function deleteTodoItem({ element, todoItem }) {
+export function deleteTodoItem({ todoItem }) {
     if (!confirm('Вы уверены?')) return
-
-    element.remove();
 
     let listArray = getTodoList(todoItem.owner);
     for (let i = 0; i < listArray.length; i++) {
