@@ -1,5 +1,5 @@
 import { createContainer } from "./createContainer.js";
-export function render(data, app) {
+export function render(data, app = null) {
   console.log(data.result);
 
   const container = createContainer('30%');
@@ -36,12 +36,6 @@ export function render(data, app) {
           margin-right: 15px;
       }
     `
-
-    detailsButton.addEventListener('click', event => {
-      event.preventDefault();
-      history.pushState(`?episodeId=${film.properties['episode_id']}`, '', `?episodeId=${film.properties['episode_id']}`)
-      app.render(app.renderDetails, app.cssPromises, app)
-    })
 
     document.head.append(style);
 
