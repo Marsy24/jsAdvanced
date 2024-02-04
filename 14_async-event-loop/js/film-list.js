@@ -1,15 +1,3 @@
-/**
- * <div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Заголовок карточки</h5>
-    <h6 class="card-subtitle mb-2 text-body-secondary">Подзаголовок карточки</h6>
-    <p class="card-text">Небольшой пример текста, который должен основываться на названии карты и составлять основную часть содержимого карты.</p>
-    <a href="#" class="card-link">Ссылка карточки</a>
-    <a href="#" class="card-link">Другая ссылка</a>
-  </div>
-</div>
- *
- */
 import { createContainer } from "./createContainer.js";
 export function render(data, app) {
   console.log(data.result);
@@ -35,9 +23,7 @@ export function render(data, app) {
 
 
     filmCard.append(cardBody);
-    cardBody.append(title);
-    cardBody.append(subTitle);
-    cardBody.append(detailsButton);
+    cardBody.append(title, subTitle, detailsButton);
 
     title.innerHTML = `Наименование фильма:<br> ${film.properties.title}`;
     subTitle.innerHTML = `Эпизод: ${film.properties['episode_id']}`;
