@@ -1,6 +1,5 @@
 import { createContainer } from "./createContainer.js";
 export function render(data, app = null) {
-  console.log(data.result);
   const films = data.result.sort((a, b) => {return parseInt(a.properties['episode_id']) - parseInt(b.properties['episode_id'])})
 
   const container = createContainer('30%');
