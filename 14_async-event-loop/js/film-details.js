@@ -67,10 +67,10 @@ export async function render(data, app = null) {
     containers[i].style.flexWrap = 'wrap';
   }
 
-  backButton.addEventListener('click', event => {
+  backButton.addEventListener('click', async (event) => {
     event.preventDefault();
     history.pushState(null, "", location.pathname);
-    app.render(app.renderList, app.cssPromises, app);
+    await app.render(app.renderList, app.cssPromises, app);
 
   })
 
