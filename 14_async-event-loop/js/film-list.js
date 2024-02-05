@@ -1,10 +1,11 @@
 import { createContainer } from "./createContainer.js";
 export function render(data, app = null) {
   console.log(data.result);
+  const films = data.result.sort((a, b) => {return parseInt(a.properties['episode_id']) - parseInt(b.properties['episode_id'])})
 
   const container = createContainer('30%');
 
-  for (const film of data.result) {
+  for (const film of films) {
     const filmCard = document.createElement('div'),
           cardBody = document.createElement('div'),
           title = document.createElement('h5'),
@@ -28,7 +29,7 @@ export function render(data, app = null) {
     title.innerHTML = `Наименование фильма:<br> ${film.properties.title}`;
     subTitle.innerHTML = `Эпизод: ${film.properties['episode_id']}`;
 
-    detailsButton.href = `?episodeId=${film.properties['episode_id']}`;
+    detailsButton.href = `?episodeId=${film.uid}`;
 
     style.innerHTML = `
       .link::before{content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
@@ -36,6 +37,17 @@ export function render(data, app = null) {
           margin-right: 15px;
       }
     `
+
+    detailsButton.addEventListener('click', event => {
+      event.preventDefault();
+
+      history.pushState(null, '', `${location}?id=${film.uid}`);
+      app.render([
+        './film-details.js',
+        `https://www.swapi.tech/api/films/${film.uid}`,
+        app.cssRender
+      ], app.cssPromises, app);
+    })
 
     document.head.append(style);
 

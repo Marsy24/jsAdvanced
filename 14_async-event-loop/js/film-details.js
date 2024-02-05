@@ -54,6 +54,7 @@ export function render(data, app = null) {
     event.preventDefault();
     history.pushState(null, "", location.pathname);
     app.render(app.renderList, app.cssPromises, app);
+
   })
 
   planets.append(planetsTitle, planetList);
