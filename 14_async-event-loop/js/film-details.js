@@ -36,13 +36,6 @@ export async function render(data, app = null) {
   planetsTitle.textContent = 'Planets';
   speciesTitle.textContent = 'Species';
 
-  const srcs = [
-    result.properties.planets, result.properties.species
-  ]
-  const containers = [
-    planetList, speciesList
-  ]
-
   const dataLi = [
     {
       properties: {
@@ -58,14 +51,13 @@ export async function render(data, app = null) {
     }
   ]
 
-  await renderDetailLi(dataLi, app.cssPromises)
+  await renderDetailLi(dataLi, app.cssPromises);
 
-  for (let i = 0; i < srcs.length; i++) {
-    //renderDetailLi(srcs[i], containers[i]);
-    containers[i].classList.add('list-group', 'list-group-horizontal');
-    containers[i].style.flexDirection = 'row';
-    containers[i].style.flexWrap = 'wrap';
-  }
+  [planetList, speciesList].map(container => {
+    container.classList.add('list-group', 'list-group-horizontal');
+    container.style.flexDirection = 'row';
+    container.style.flexWrap = 'wrap';
+  })
 
   backButton.addEventListener('click', async (event) => {
     event.preventDefault();
