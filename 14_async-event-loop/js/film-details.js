@@ -1,7 +1,7 @@
 import { createContainer } from "./createContainer.js";
 import { renderDetailLi } from "./render.js";
 
-export function render(data, app = null) {
+export async function render(data, app = null) {
   const result = data.result,
         container = createContainer('50%'),
         backButton = document.createElement('a'),
@@ -43,8 +43,25 @@ export function render(data, app = null) {
     planetList, speciesList
   ]
 
+  const dataLi = [
+    {
+      properties: {
+        src: result.properties.planets,
+        container: planetList
+      }
+    },
+    {
+      properties: {
+        src: result.properties.species,
+        container: speciesList
+      }
+    }
+  ]
+
+  await renderDetailLi(dataLi, app.cssPromises)
+
   for (let i = 0; i < srcs.length; i++) {
-    renderDetailLi(srcs[i], containers[i]);
+    //renderDetailLi(srcs[i], containers[i]);
     containers[i].classList.add('list-group', 'list-group-horizontal');
     containers[i].style.flexDirection = 'row';
     containers[i].style.flexWrap = 'wrap';

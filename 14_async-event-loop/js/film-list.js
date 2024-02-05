@@ -1,5 +1,5 @@
 import { createContainer } from "./createContainer.js";
-export function render(data, app = null) {
+export async function render(data, app = null) {
   const films = data.result.sort((a, b) => {return parseInt(a.properties['episode_id']) - parseInt(b.properties['episode_id'])})
 
   const container = createContainer('30%');
@@ -37,11 +37,11 @@ export function render(data, app = null) {
       }
     `
 
-    detailsButton.addEventListener('click', event => {
+    detailsButton.addEventListener('click', async (event) => {
       event.preventDefault();
 
       history.pushState(null, '', `${location}?id=${film.uid}`);
-      app.render([
+      await app.render([
         './film-details.js',
         `https://www.swapi.tech/api/films/${film.uid}`,
         app.cssRender
